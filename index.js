@@ -1,7 +1,10 @@
 function fetchBooks(){
-  const books =fetch('https://anapioficeandfire.com/api/books')
+
+  let books = fetch('https://anapioficeandfire.com/api/books')
     .then(response => response.json())
-    .then(data => renderBooks(data));
+    .then(res => renderBooks(res));
+    return books;
+    
   }
 
 
@@ -11,6 +14,7 @@ function renderBooks(books) {
   const main = document.querySelector('main');
   books.forEach(book => {
     const h2 = document.createElement('h2');
+    //main.innerHTML = book.title;
     h2.innerHTML = book.name;
     main.appendChild(h2);
   });
